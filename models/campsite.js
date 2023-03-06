@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
 require('mongoose-currency').loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 
@@ -15,8 +16,8 @@ const commentSchema = new Schema({
         required: true
     },
     author: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectID,
+        ref: 'User'
     }
 }, {
     timestamps: true
@@ -53,7 +54,6 @@ const campsiteSchema = new Schema({
 }, {
     timestamps: true
 });
-
 
 const Campsite = mongoose.model('Campsite', campsiteSchema);
 
